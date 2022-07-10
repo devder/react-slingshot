@@ -1,7 +1,7 @@
 version: 2.1
 
 defaults: &defaults
-  docker: 
+  docker:
     - image: cimg/node:13.8.0
 
 jobs:
@@ -40,12 +40,12 @@ jobs:
       - run: npm audit
 
 workflows:
-  save_and_print_workflow:
+  test_ci_pipeline:
     jobs:
       - build
       - test:
           requires:
             - build
-      - analyze
+      - analyze:
           requires:
             - test
